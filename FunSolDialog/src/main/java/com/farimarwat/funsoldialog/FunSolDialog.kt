@@ -23,7 +23,7 @@ class FunSolDialog private constructor(builder:Builder){
         val TYPE_SUCCESS = 2
         val TYPE_ERROR = 3
     }
-    var mListener:FunSolDialogButtonClickListener
+    var mListener:FunSolDialogButtonClickListener?=null
     lateinit var mAlertDialog:AlertDialog
     var mContext: Context
     class Builder(val context: Context){
@@ -33,18 +33,18 @@ class FunSolDialog private constructor(builder:Builder){
         private var negative:String? = null
         private var dialogtype = 1
         private var cancelable:Boolean = false
-        lateinit var mListener:FunSolDialogButtonClickListener
+        var mListener:FunSolDialogButtonClickListener?=null
 
         fun setTitle(title:String?) = apply { this.title = title }
         fun setMessage(message:String?) = apply { this.message = message }
         fun setDialogType(type:Int) = apply { this.dialogtype = type }
         fun setCancelable(cancelable:Boolean) = apply { this.cancelable = cancelable }
-        fun setPositive(positive:String?,listener: FunSolDialogButtonClickListener)=
+        fun setPositive(positive:String?,listener: FunSolDialogButtonClickListener?)=
             apply {
                 this.positive = positive
                 this.mListener = listener
             }
-        fun setNegative(negative:String?,listener: FunSolDialogButtonClickListener)=
+        fun setNegative(negative:String?,listener: FunSolDialogButtonClickListener?)=
             apply {
                 this.negative = negative
                 this.mListener = listener
@@ -82,7 +82,7 @@ class FunSolDialog private constructor(builder:Builder){
         if(positive != null){
             txt_positive.visibility = View.VISIBLE
             txt_positive.setOnClickListener{
-                mListener.onButtonClicked(mAlertDialog)
+                mListener?.onButtonClicked(mAlertDialog)
             }
         } else {
             txt_positive.visibility = View.GONE
@@ -91,7 +91,7 @@ class FunSolDialog private constructor(builder:Builder){
         if(negative != null){
             txt_negative.visibility = View.VISIBLE
             txt_negative.setOnClickListener{
-                mListener.onButtonClicked(mAlertDialog)
+                mListener?.onButtonClicked(mAlertDialog)
             }
         }else {
             txt_negative.visibility = View.GONE

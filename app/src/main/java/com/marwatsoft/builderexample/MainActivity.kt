@@ -81,12 +81,7 @@ class MainActivity : AppCompatActivity() {
                 .setTitle("Default")
                 .setMessage("This is my default message")
                 .setCancelable(true)
-                .setPositive("Allow",object :FunSolDialog.FunSolDialogButtonClickListener{
-                    override fun onButtonClicked(dialog: AlertDialog) {
-                        dialog.dismiss()
-                    }
 
-                })
                 .build()
             dialog.show()
         }
