@@ -22,7 +22,7 @@
   `
 
 	dependencies {
-	        implementation 'com.github.farimarwat:FunSolAlertDialog:1.0'
+	        implementation 'com.github.farimarwat:FunSolAlertDialog:1.1'
 	}
 
 `
